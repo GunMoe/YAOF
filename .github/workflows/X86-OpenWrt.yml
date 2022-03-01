@@ -4,7 +4,7 @@ on:
 #  schedule:
 #    - cron: 5 6 * * 0
   watch:
-    #types: started
+    types: started
 
 jobs:
   build:
@@ -130,14 +130,4 @@ jobs:
         name: OpenWRT_${{ env.latest_release }}
         path: ./artifact/
 
-    - name: Create release
-      id: create_release
-      uses: ncipollo/release-action@v1.8.0
-      with:
-        name: OpenWRT-${{ env.latest_release }}
-        allowUpdates: true
-        tag: ${{ env.latest_release }}
-        commit: master
-        replacesArtifacts: true
-        token: ${{ secrets.workflow_token }}
-        artifacts: ./artifact/*.zip
+ 
